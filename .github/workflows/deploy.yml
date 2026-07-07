@@ -15,14 +15,20 @@ jobs:
         run: |
           find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
 
-      - name: Create production DB config
+      - name: Create production config files
         run: |
-          cat > config/db.local.php << 'EOF'
+          cat > config/db.local.php << EOF
           <?php
           \$DB_HOST = '${{ secrets.DB_HOST }}';
           \$DB_NAME = '${{ secrets.DB_NAME }}';
           \$DB_USER = '${{ secrets.DB_USER }}';
           \$DB_PASS = '${{ secrets.DB_PASS }}';
+          EOF
+          cat > config/mail.local.php << EOF
+          <?php
+          \$MAIL_USERNAME = '${{ secrets.MAIL_USERNAME }}';
+          \$MAIL_PASSWORD = '${{ secrets.MAIL_PASSWORD }}';
+          \$MAIL_FROM     = '${{ secrets.MAIL_FROM }}';
           EOF
 
       - name: Deploy via FTP

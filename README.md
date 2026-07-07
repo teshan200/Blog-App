@@ -72,11 +72,15 @@ Blog/
 ├── api/
 │   └── upload.php      # Image upload endpoint (called by EasyMDE)
 ├── assets/
-│   └── css/
-│       └── style.css   # All styling
+│   ├── css/
+│   │   └── style.css   # All styling
+│   └── js/
+│       └── main.js     # EasyMDE initialization + image upload handler
 ├── config/
-│   ├── db.php          # Database connection (PDO)
-│   └── mail.php        # SMTP / PHPMailer configuration
+│   ├── db.php                 # Database connection (PDO)
+│   ├── db.local.example.php   # Local DB config template (gitignore the .local copy)
+│   ├── mail.php               # SMTP / PHPMailer configuration
+│   └── mail.local.example.php # Mail credentials template (gitignore the .local copy)
 ├── includes/
 │   ├── auth.php        # Authentication helpers (is_logged_in, require_admin, etc.)
 │   ├── footer.php      # Shared footer
@@ -99,6 +103,28 @@ Blog/
 ├── register.php        # Registration page
 └── verify.php          # Email verification handler
 ```
+
+## CI/CD with GitHub Actions
+
+The repo includes `.github/workflows/deploy.yml` for automatic deployment to InfinityFree via FTP on every push to `main`.
+
+### Required GitHub Secrets
+
+Go to your repo → **Settings → Secrets and variables → Actions → New repository secret** and add:
+
+| Secret | Description |
+|--------|-------------|
+| `FTP_USERNAME` | InfinityFree FTP username (e.g. `epiz_12345678`) |
+| `FTP_PASSWORD` | InfinityFree FTP password |
+| `DB_HOST` | InfinityFree MySQL host from the control panel (e.g. `sql123.epizy.com`) |
+| `DB_NAME` | InfinityFree database name (e.g. `epiz_12345678_blog_app`) |
+| `DB_USER` | InfinityFree MySQL username |
+| `DB_PASS` | InfinityFree MySQL password |
+| `MAIL_USERNAME` | _(optional)_ Gmail address for sending verification emails |
+| `MAIL_PASSWORD` | _(optional)_ Gmail App Password |
+| `MAIL_FROM` | _(optional)_ Sender address (same as username typically) |
+
+If `MAIL_*` secrets are omitted, users will register without receiving a verification email. An admin can verify them manually via phpMyAdmin.
 
 ## Security
 
