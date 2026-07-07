@@ -2,8 +2,9 @@
 /uploads/*
 !/uploads/.htaccess
 
-# Local mail credentials (contains Gmail App Password – never commit!)
+# Local credentials – never commit!
 /config/mail.local.php
+/config/db.local.php
 
 # OS junk
 .DS_Store

@@ -3,13 +3,23 @@
  * Database connection using PDO.
  * Prepared statements are used everywhere; emulated prepares are turned OFF
  * so MySQL does the real parameter binding (safer against SQL injection).
+ *
+ * Local overrides: create config/db.local.php (gitignored) to use different
+ * credentials on your machine without touching this file.
  */
 
-// DB settings for XAMPP defaults
+// Default: XAMPP localhost
 $DB_HOST = '127.0.0.1';
 $DB_NAME = 'blog_app';
 $DB_USER = 'root';
-$DB_PASS = ''; // empty on default XAMPP
+$DB_PASS = '';
+
+// If a local override exists, load it (e.g. for InfinityFree credentials
+// during CI/CD, or different local MySQL creds).
+$localDb = __DIR__ . '/db.local.php';
+if (file_exists($localDb)) {
+    require $localDb;
+}
 
 // Build the Data Source Name
 $dsn = "mysql:host=$DB_HOST;dbname=$DB_NAME;charset=utf8mb4";
