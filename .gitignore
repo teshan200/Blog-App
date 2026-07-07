@@ -1,0 +1,23 @@
+# Ignore user-uploaded images but keep the .htaccess security file
+/uploads/*
+!/uploads/.htaccess
+
+# Local mail credentials (contains Gmail App Password – never commit!)
+/config/mail.local.php
+
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE / editor config
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Logs
+*.log

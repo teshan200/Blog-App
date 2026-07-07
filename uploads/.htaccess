@@ -1,0 +1,7 @@
+# Disable PHP execution in the uploads folder
+php_flag engine off
+
+# Only serve images and related files
+<FilesMatch "\.(php|phtml|php3|php4|php5|phps|pl|cgi|asp|aspx|exe|sh|bat|cmd)$">
+    Deny from all
+</FilesMatch>

@@ -1,0 +1,523 @@
+/* ============================================================
+   Blog Application - Stylesheet
+   Responsive layout using CSS Grid + Flexbox.
+   No frameworks — pure custom CSS.
+   ============================================================ */
+
+/* ---------- reset & base ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                 Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #f4f6f8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ---------- utility container ---------- */
+.container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    flex: 1;
+}
+
+/* ---------- navbar ---------- */
+.navbar {
+    background: #1e293b;
+    color: #fff;
+    padding: 0 1rem;
+}
+.nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: 56px;
+}
+.brand {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+}
+.brand:hover {
+    text-decoration: none;
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.nav-links a {
+    color: #cbd5e1;
+}
+.nav-links a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.nav-user {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+.btn-link {
+    background: #2563eb;
+    color: #fff !important;
+    padding: 0.35rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+.btn-link:hover {
+    background: #1d4ed8;
+    text-decoration: none !important;
+}
+
+/* ---------- flash messages ---------- */
+.flash {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+.flash-error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+.flash-success {
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+/* ---------- cards ---------- */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* ---------- page head (title + new post) ---------- */
+.page-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.page-head h1 {
+    font-size: 1.6rem;
+}
+
+/* ---------- post grid (index) ---------- */
+.post-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.post-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+}
+.post-card-img {
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
+    background: #e2e8f0;
+}
+.post-card-img a {
+    display: block;
+}
+.post-card-img img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+.post-card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.post-title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+}
+.post-title a {
+    color: #111;
+}
+.post-title a:hover {
+    color: #2563eb;
+    text-decoration: none;
+}
+.post-meta {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 0.6rem;
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+}
+.post-snippet {
+    color: #475569;
+    margin-bottom: 0.75rem;
+    flex: 1;
+}
+.read-more {
+    font-weight: 600;
+    font-size: 0.9rem;
+    align-self: flex-start;
+}
+
+/* ---------- featured images ---------- */
+.single-featured-img {
+    margin: -1.5rem -1.5rem 1.25rem -1.5rem;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    background: #e2e8f0;
+    max-height: 360px;
+}
+.single-featured-img img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+.featured-preview {
+    margin-bottom: 0.5rem;
+}
+.featured-preview img {
+    max-height: 140px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+.checkbox-inline {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #b91c1c;
+    cursor: pointer;
+}
+.checkbox-inline input {
+    margin-right: 0.3rem;
+    vertical-align: middle;
+}
+.featured-upload {
+    margin-bottom: 1rem;
+}
+.featured-upload input[type="file"] {
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+/* ---------- single post view ---------- */
+.single-post .post-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+}
+.single-post .post-meta {
+    margin-bottom: 1.25rem;
+}
+.post-content {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+.post-content h2,
+.post-content h3 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+.post-content p {
+    margin-bottom: 1rem;
+}
+.post-content ul,
+.post-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 1rem 0;
+    display: block;
+}
+.post-content blockquote {
+    border-left: 4px solid #2563eb;
+    padding-left: 1rem;
+    color: #475569;
+    margin: 1rem 0;
+}
+.post-content hr {
+    margin: 1.5rem 0;
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+}
+.post-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #e2e8f0;
+}
+.inline-form {
+    display: inline;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.btn-danger {
+    background: #dc2626;
+}
+.btn-danger:hover {
+    background: #b91c1c;
+}
+
+/* ---------- forms ---------- */
+.form-card {
+    max-width: 560px;
+    margin: 0 auto;
+}
+/* Wider variant for pages with the Markdown editor toolbar */
+.form-card.editor-wide {
+    max-width: 780px;
+}
+.form label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+}
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    margin-top: 0.25rem;
+    font-family: inherit;
+}
+.form input:focus,
+.form textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
+}
+.form textarea {
+    resize: vertical;
+}
+.form-note {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+}
+.muted {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* ---------- admin panel ---------- */
+.admin-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.admin-head h1 {
+    font-size: 1.5rem;
+}
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.stat-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2563eb;
+}
+.stat-label {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.admin-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+@media (min-width: 768px) {
+    .admin-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.admin-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+.profile-table td {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+.profile-label {
+    color: #64748b;
+    font-weight: 600;
+    width: 110px;
+}
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+.admin-table th,
+.admin-table td {
+    text-align: left;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+.admin-table th {
+    font-weight: 600;
+    color: #475569;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.admin-table tbody tr:hover {
+    background: #f8fafc;
+}
+.action-cell {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+.btn-sm {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-sm:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.btn-sm-danger {
+    background: #dc2626;
+}
+.btn-sm-danger:hover {
+    background: #b91c1c;
+}
+.role-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.role-admin {
+    background: #fef3c7;
+    color: #92400e;
+}
+.role-author {
+    background: #dbeafe;
+    color: #1e40af;
+}
+.nav-admin-link {
+    background: #f59e0b;
+    color: #fff !important;
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.nav-admin-link:hover {
+    background: #d97706;
+    text-decoration: none !important;
+}
+
+/* ---------- footer ---------- */
+.footer {
+    background: #1e293b;
+    color: #94a3b8;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+    margin-top: auto;
+}
