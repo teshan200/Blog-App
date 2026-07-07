@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Validate PHP syntax
         run: |
@@ -35,4 +35,4 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
       - name: Deploy via FTP
-        run: lftp -c "open -u '${{ secrets.FTP_USERNAME }}','${{ secrets.FTP_PASSWORD }}' ftpupload.net; set ftp:ssl-allow no; set ftp:chmod no; mirror -R --verbose=2 --exclude-glob .git/ --exclude-glob .gitignore --exclude-glob .github/ --exclude-glob .gitattributes --exclude-glob README.md ./ /htdocs/; quit"
+        run: lftp -c "open -u '${{ secrets.FTP_USERNAME }}','${{ secrets.FTP_PASSWORD }}' ftpupload.net; set ftp:ssl-allow no; set ftp:chmod no; set cmd:fail-exit no; mirror -R --verbose=2 --exclude-glob .git/ --exclude-glob .gitignore --exclude-glob .github/ --exclude-glob .gitattributes --exclude-glob README.md ./ /htdocs/; quit"
