@@ -25,7 +25,7 @@ A feature-rich blog built with vanilla PHP, MySQL, HTML/CSS, and JavaScript — 
 
 1. **Clone the repository** into your web server's document root (e.g. `htdocs/`):
    ```
-   git clone https://github.com/your-username/your-repo.git Blog
+   git clone https://github.com/teshan200/Blog-App.git Blog
    ```
 
 2. **Create the database** — open phpMyAdmin or run:
