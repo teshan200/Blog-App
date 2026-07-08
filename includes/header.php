@@ -29,7 +29,6 @@ $root  = $root ?? '';
             <a href="<?= $root ?>index.php">Home</a>
             <?php if (is_logged_in()): ?>
                 <a href="<?= $root ?>dashboard.php">Dashboard</a>
-                <a href="<?= $root ?>create.php">New Post</a>
                 <?php if (is_admin()): ?>
                     <a href="<?= $root ?>admin/index.php">Admin</a>
                 <?php endif; ?>
